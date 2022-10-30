@@ -7,9 +7,17 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.ddesc_aplicativo.databinding.ActivityMainBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -29,9 +37,15 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken("484893052479-52rfh3ve9s4nacelu44869tou839h7ie.apps.googleusercontent.com").requestEmail().build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        //Botão de Entrar para logar
         binding.botaoEntrar.setOnClickListener {
             if(TextUtils.isEmpty(binding.editTextUsuario.text)){
-                binding.editTextUsuario.error = "Por favor, preencha o nome de usuário"
+                binding.editTextUsuario.error = "Por favor, preenc.ha o nome de usuário"
             }else if(TextUtils.isEmpty(binding.editTextSenha.text)){
                 binding.editTextSenha.error = "Por favor, preencha a senha"
             }else {
@@ -45,12 +59,59 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+        //Botão de entrar como convidado
         binding.botaoConvidado.setOnClickListener {
             val intent = Intent(this, PrincipalActivity::class.java)
             startActivity(intent)
             finish()
 
         }
+        //Botão do google
+        binding.botaoGoogle.setOnClickListener{
+            signIn()
+        }
+
+    }
+    private fun signIn(){
+        val intent = googleSignInClient.signInIntent
+        abreActivity.launch(intent)
+
+    }
+    var abreActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result: ActivityResult ->
+
+        if(result.resultCode == RESULT_OK){
+            val intent = result.data
+            val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
+            try {
+                val conta = task.getResult(ApiException::class.java)
+                loginComGoogle(conta.idToken!!)
+            }catch (exception: ApiException){
+
+            }
+        }
+
+    }
+
+    private fun loginComGoogle(token: String){
+        val credencial = GoogleAuthProvider.getCredential(token, null)
+        auth.signInWithCredential(credencial).addOnCompleteListener(this){
+            task: Task<AuthResult> ->
+            if (task.isSuccessful){
+                Toast.makeText(
+                    baseContext, "Autenticação efetuada com sucesso.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                abrePrincipal()
+            }else{
+                Toast.makeText(
+                    baseContext, "Erro na autenticação com Google, tente novamente.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            }
+        }
+
     }
 
     private fun loginUsuarioESenha(usuario: String, senha: String) {
@@ -60,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
+
 
                     val user = auth.currentUser
                     Toast.makeText(
@@ -68,15 +129,15 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     abrePrincipal()
-                    //updateUI(user)
+
                 } else {
-                    // If sign in fails, display a message to the user.
+
                     Log.w(TAG, "signInWithCustomToken:failure", task.exception)
                     Toast.makeText(
-                        baseContext, "Erro de autenticação.",
+                        baseContext, "Usuário e/ou Senha incorreto(s).",
                         Toast.LENGTH_SHORT
                     ).show()
-                    //updateUI(null)
+
                 }
             }
     }
