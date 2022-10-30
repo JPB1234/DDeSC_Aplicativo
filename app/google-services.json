@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "484893052479",
+    "project_id": "ddescaplicativo",
+    "storage_bucket": "ddescaplicativo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484893052479:android:21ca24196572d57b08328a",
+        "android_client_info": {
+          "package_name": "com.example.ddesc_aplicativo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484893052479-nidcubg0sk78n30bh84aas9kkh2b4jgg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ddesc_aplicativo",
+            "certificate_hash": "103a3159a98bdf803562390a7ea0387950ef45c2"
+          }
+        },
+        {
+          "client_id": "484893052479-52rfh3ve9s4nacelu44869tou839h7ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtatIRIv5vlAdO9cIsLvllkVdSE3v6TkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484893052479-52rfh3ve9s4nacelu44869tou839h7ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

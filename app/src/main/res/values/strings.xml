@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProjetoDDeSC</string>
+    <string name="edit_usuario">Usuário</string>
+    <string name="edit_senha">Senha</string>
+    <string name="botao_entrar">Entrar</string>
+    <string name="text_ou">ou</string>
+    <string name="botao_sair">Sair</string>
+    <string name="text_cadastro">Ainda não possui uma conta? Cadastre-se</string>
+    <string name="Botao_convidado">Entrar como convidado</string>
+</resources>
