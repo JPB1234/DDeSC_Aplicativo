@@ -5,6 +5,16 @@
     <string name="botao_entrar">Entrar</string>
     <string name="text_ou">ou</string>
     <string name="botao_sair">Sair</string>
-    <string name="text_cadastro">Ainda não possui uma conta? Cadastre-se</string>
+    <string name="text_cadastro">Ainda não possui uma conta?</string>
     <string name="Botao_convidado">Entrar como convidado</string>
+
+    <string name="Botao_cadastro">Cadastre-se</string>
+
+    <string name="edit_nome_de_usuario">Nome de usuário</string>
+    <string name="edit_email_de_cadastro">Email de cadastro</string>
+    <string name="edit_senha_de_cadastro">Senha</string>
+    <string name="edit_confirmar_senha_de_cadastro">Confirmação da senha</string>
+    <string name="Botao_confirma_cadastro">Confirmar cadastro</string>
+    <string name="botao_voltar_menu">Voltar para o menu</string>
+
 </resources>

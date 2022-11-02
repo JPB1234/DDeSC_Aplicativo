@@ -72,4 +72,10 @@
         android:text="@string/text_cadastro"
         android:textColor="#3F51B5" />
 
+    <Button
+        android:id="@+id/botaoCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Botao_cadastro" />
+
 </LinearLayout>

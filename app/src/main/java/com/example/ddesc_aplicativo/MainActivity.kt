@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         //Botão de Entrar para logar
         binding.botaoEntrar.setOnClickListener {
             if(TextUtils.isEmpty(binding.editTextUsuario.text)){
-                binding.editTextUsuario.error = "Por favor, preenc.ha o nome de usuário"
+                binding.editTextUsuario.error = "Por favor, preencha o nome de usuário"
             }else if(TextUtils.isEmpty(binding.editTextSenha.text)){
                 binding.editTextSenha.error = "Por favor, preencha a senha"
             }else {
@@ -69,6 +69,13 @@ class MainActivity : AppCompatActivity() {
         //Botão do google
         binding.botaoGoogle.setOnClickListener{
             signIn()
+        }
+
+        //Botão de cadastro
+        binding.botaoCadastro.setOnClickListener{
+            val intent = Intent(this, CadastroActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
