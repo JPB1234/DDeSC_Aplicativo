@@ -27,5 +27,11 @@ class PrincipalActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.botaoGraficos.setOnClickListener {
+            val intent = Intent(this, TelaGraficos::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
