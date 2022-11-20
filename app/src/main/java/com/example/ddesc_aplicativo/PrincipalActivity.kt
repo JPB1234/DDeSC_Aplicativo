@@ -3,7 +3,6 @@ package com.example.ddesc_aplicativo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ddesc_aplicativo.databinding.ActivityMainBinding
 import com.example.ddesc_aplicativo.databinding.ActivityPrincipalBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -23,7 +22,13 @@ class PrincipalActivity : AppCompatActivity() {
 
         binding.botaoSair.setOnClickListener {
             auth.signOut()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.botaoGraficos.setOnClickListener {
+            val intent = Intent(this, TelaGraficos::class.java)
             startActivity(intent)
             finish()
         }
