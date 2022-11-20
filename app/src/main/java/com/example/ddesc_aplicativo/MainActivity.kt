@@ -1,7 +1,9 @@
 package com.example.ddesc_aplicativo
 
+//import com.example.ddesc_aplicativo.databinding.ActivityMainBinding
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.hardware.Camera
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,7 +11,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import com.example.ddesc_aplicativo.databinding.ActivityMainBinding
+import com.example.ddesc_aplicativo.databinding.ActivityLoginBinding
+import com.example.ddesc_aplicativo.databinding.ActivityPrincipalBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,16 +23,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import me.dm7.barcodescanner.core.CameraUtils
+import java.util.jar.Manifest
 
-class LoginActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //claudio
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
 
         val view = binding.root
 
@@ -79,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
     private fun signIn(){
         val intent = googleSignInClient.signInIntent
         abreActivity.launch(intent)
