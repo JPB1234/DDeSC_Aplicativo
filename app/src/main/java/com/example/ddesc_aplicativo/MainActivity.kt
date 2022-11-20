@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+//claudio
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         val view = binding.root
