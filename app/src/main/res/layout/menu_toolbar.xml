@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@color/black">
+
+    <ImageView
+        android:layout_width="37dp"
+        android:layout_height="34dp"
+        android:src="@drawable/ic_baseline_menu_24" />
+
+    <TextView
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+    
+
+
+</LinearLayout>

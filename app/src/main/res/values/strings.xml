@@ -18,4 +18,8 @@
     <string name="Botao_confirma_cadastro">Confirmar cadastro</string>
     <string name="botao_voltar_menu">Voltar para o menu</string>
 
+    <string name="Sair">Sair</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="ddesc">DDeSC</string>
+    <string name="dashboard">Dashboard</string>
 </resources>
