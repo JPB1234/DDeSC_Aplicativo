@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_lista"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_lista" />
+
+        <item
+            android:id="@+id/nav_cupom"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="@string/menu_cupons" />
+        <item
+            android:id="@+id/nav_graficoDeGastos"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_graficoDeGastos" />
+        <item
+            android:id="@+id/nav_mercadosProximos"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="@string/menu_mercadosProximos" />
+        <item
+            android:id="@+id/nav_configuracoes"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="@string/menu_configuracoes" />
+        <item
+            android:id="@+id/nav_lixeira"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="@string/menu_lixeira" />
+
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="@string/menu_sair" />
+
+
+
+
+
+
+
+    </group>
+
+
+
+
+</menu>

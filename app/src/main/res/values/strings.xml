@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ProjetoDDeSC</string>
     <string name="edit_usuario">Usuário</string>
+    <string name="edit_email">Email</string>
     <string name="edit_senha">Senha</string>
     <string name="botao_entrar">Entrar</string>
     <string name="text_ou">ou</string>
@@ -19,4 +20,26 @@
     <string name="Botao_confirma_cadastro">Confirmar cadastro</string>
     <string name="botao_voltar_menu">Voltar para o menu</string>
 
+
+    <string name="Botao_recuperar_senha">Enviar email de recuperação</string>
+
+    <string name="Botao_esqueci_senha">Esqueci minha senha</string>
+    <string name="Botao_VoltarTelaLogin">Voltar para tela de login</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_lista">Lista</string>
+    <string name="menu_cupons">Cupons</string>
+    <string name="menu_graficoDeGastos">Gráfico de gastos</string>
+    <string name="menu_mercadosProximos">Mercados Próximos</string>
+    <string name="menu_configuracoes">Configurações</string>
+    <string name="menu_lixeira">Lixeira</string>
+    <string name="menu_sair">Sair</string>
+    <string name="sair_txt">Tem certeza que deseja sair?</string>
+    <string name="nao_txt">Não</string>
 </resources>

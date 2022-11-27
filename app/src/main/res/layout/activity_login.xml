@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
 
     <ImageView
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/edit_usuario"
+        android:hint="@string/edit_email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575" />
@@ -39,6 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/botao_entrar" />
+    <Button
+        android:id="@+id/BotaoEsqueciMinhaSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Botao_esqueci_senha" />
 
     <TextView
         android:id="@+id/textView"
