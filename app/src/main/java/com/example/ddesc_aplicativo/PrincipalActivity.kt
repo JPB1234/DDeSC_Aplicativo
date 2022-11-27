@@ -33,12 +33,6 @@ class PrincipalActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.botaoGraficos.setOnClickListener {
-            val intent = Intent(this, TelaGraficos::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         binding.botaoLeitor.setOnClickListener {
             val intent = Intent(applicationContext, TelaLeitorCamera::class.java)
             startActivity(intent)
