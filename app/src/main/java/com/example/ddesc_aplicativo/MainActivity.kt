@@ -1,180 +1,55 @@
 package com.example.ddesc_aplicativo
 
-import android.content.ContentValues.TAG
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
+import android.view.Menu
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.navigation.NavigationView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ddesc_aplicativo.databinding.ActivityMainBinding
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var auth: FirebaseAuth
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val view = binding.root
+        setSupportActionBar(binding.appBarMain.toolbar)
 
-        setContentView(view)
-
-        auth = Firebase.auth
-
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken("484893052479-52rfh3ve9s4nacelu44869tou839h7ie.apps.googleusercontent.com").requestEmail().build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        //Botão de Entrar para logar
-        binding.botaoEntrar.setOnClickListener {
-            if(TextUtils.isEmpty(binding.editTextUsuario.text)){
-                binding.editTextUsuario.error = "Por favor, preencha o nome de usuário"
-            }else if(TextUtils.isEmpty(binding.editTextSenha.text)){
-                binding.editTextSenha.error = "Por favor, preencha a senha"
-            }else {
-
-
-                loginUsuarioESenha(
-                    binding.editTextUsuario.text.toString(),
-                    binding.editTextSenha.text.toString()
-                )
-            }
-
-
-        }
-        //Botão de entrar como convidado
-        binding.botaoConvidado.setOnClickListener {
-            val intent = Intent(this, PrincipalActivity::class.java)
-            startActivity(intent)
-            finish()
-
-        }
-        //Botão do google
-        binding.botaoGoogle.setOnClickListener{
-            signIn()
-        }
-
-        //Botão de cadastro
-        binding.botaoCadastro.setOnClickListener{
-            val intent = Intent(this, CadastroActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-    }
-    private fun signIn(){
-        val intent = googleSignInClient.signInIntent
-        abreActivity.launch(intent)
-
-    }
-    var abreActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result: ActivityResult ->
-
-        if(result.resultCode == RESULT_OK){
-            val intent = result.data
-            val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
-            try {
-                val conta = task.getResult(ApiException::class.java)
-                loginComGoogle(conta.idToken!!)
-            }catch (exception: ApiException){
-
-            }
-        }
-
-    }
-
-    private fun loginComGoogle(token: String){
-        val credencial = GoogleAuthProvider.getCredential(token, null)
-        auth.signInWithCredential(credencial).addOnCompleteListener(this){
-            task: Task<AuthResult> ->
-            if (task.isSuccessful){
-                Toast.makeText(
-                    baseContext, "Autenticação efetuada com sucesso.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                abrePrincipal()
-            }else{
-                Toast.makeText(
-                    baseContext, "Erro na autenticação com Google, tente novamente.",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-            }
-        }
-
-    }
-
-    private fun loginUsuarioESenha(usuario: String, senha: String) {
-        auth.signInWithEmailAndPassword(
-           usuario,
-            senha
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_lista, R.id.nav_cupom, R.id.nav_graficoDeGastos, R.id.nav_mercadosProximos, R.id.nav_configuracoes, R.id.nav_lixeira, R.id.nav_sair
+            ), drawerLayout
         )
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-
-
-                    val user = auth.currentUser
-                    Toast.makeText(
-                        baseContext, "Autenticação efetuada com sucesso.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    abrePrincipal()
-
-                } else {
-
-                    Log.w(TAG, "signInWithCustomToken:failure", task.exception)
-                    Toast.makeText(
-                        baseContext, "Usuário e/ou Senha incorreto(s).",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                }
-            }
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
-
-    fun abrePrincipal(){
-        Toast.makeText(baseContext, "Autenticação efetuada com sucesso.",
-            Toast.LENGTH_SHORT).show()
-        binding.editTextUsuario.text.clear()
-        binding.editTextSenha.text.clear()
-        val intent = Intent(this, PrincipalActivity::class.java)
-        startActivity(intent)
-        finish()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main, menu)
+        return true
     }
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            if(currentUser.email?.isNotEmpty() == true){
-                Toast.makeText(baseContext, "Usuário " + currentUser.email + " já está logado",
-                    Toast.LENGTH_SHORT).show()
-                abrePrincipal()
-            }
-        }
-
-        //updateUI(currentUser)
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-
-
 }

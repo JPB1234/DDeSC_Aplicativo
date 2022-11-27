@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_lista">
+
+    <fragment
+        android:id="@+id/nav_lista"
+        android:name="com.example.ddesc_aplicativo.ui.lista.ListaFragment"
+        android:label="@string/menu_lista"
+        tools:layout="@layout/fragment_lista" />
+
+    <fragment
+        android:id="@+id/nav_cupom"
+        android:name="com.example.ddesc_aplicativo.ui.cupom.CupomFragment"
+        android:label="@string/menu_cupons"
+        tools:layout="@layout/fragment_cupom" />
+
+    <fragment
+        android:id="@+id/nav_graficoDeGastos"
+        android:name="com.example.ddesc_aplicativo.ui.graficoDeGastos.GraficoDeGastosFragment"
+        android:label="@string/menu_graficoDeGastos"
+        tools:layout="@layout/fragment_grafico_de_gastos" />
+    <fragment
+        android:id="@+id/nav_mercadosProximos"
+        android:name="com.example.ddesc_aplicativo.ui.mercadosProximos.MercadosProximosFragment"
+        android:label="@string/menu_mercadosProximos"
+        tools:layout="@layout/fragment_mercados_proximos" />
+    <fragment
+        android:id="@+id/nav_configuracoes"
+        android:name="com.example.ddesc_aplicativo.ui.configuracoes.ConfiguracoesFragment"
+        android:label="@string/menu_configuracoes"
+        tools:layout="@layout/fragment_configuracoes" />
+    <fragment
+        android:id="@+id/nav_lixeira"
+        android:name="com.example.ddesc_aplicativo.ui.lixeira.LixeiraFragment"
+        android:label="@string/menu_lixeira"
+        tools:layout="@layout/fragment_lixeira" />
+    <fragment
+        android:id="@+id/nav_sair"
+        android:name="com.example.ddesc_aplicativo.ui.sair.SairFragment"
+        android:label="@string/menu_sair"
+        tools:layout="@layout/fragment_sair" />
+
+</navigation>

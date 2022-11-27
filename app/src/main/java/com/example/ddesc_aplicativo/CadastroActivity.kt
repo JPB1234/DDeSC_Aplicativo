@@ -6,16 +6,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.ddesc_aplicativo.databinding.ActivityFormCadastroBinding
+
 import com.example.ddesc_aplicativo.databinding.ActivityPrincipalBinding
+
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+
 import com.google.firebase.auth.FirebaseAuthMultiFactorException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
+
+
 
 class CadastroActivity : AppCompatActivity(){
     private lateinit var binding: ActivityFormCadastroBinding
@@ -71,7 +77,8 @@ class CadastroActivity : AppCompatActivity(){
         }
 
         binding.botaoVoltarParaMenu.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
+
             startActivity(intent)
             finish()
         }
@@ -80,7 +87,7 @@ class CadastroActivity : AppCompatActivity(){
     fun abrePrincipal(){
         Toast.makeText(baseContext, "Autenticação efetuada com sucesso.",
             Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, PrincipalActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
